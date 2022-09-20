@@ -1,0 +1,158 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+
+// App.js
+
+// import { useEffect, useState } from "react";
+
+// export default function App() {
+//   const [todos, setTodos] = useState(() => {
+//     const savedTodos = localStorage.getItem("todos");
+//     if (savedTodos) {
+//       return JSON.parse(savedTodos);
+//     } else {
+//       return [];
+//     }
+//   });
+
+//   const [todo, setTodo] = useState("");
+
+//   useEffect(() => {
+//     localStorage.setItem("todos", JSON.stringify(todos));
+//   }, [todos]);
+
+//   function handleInputChange(e) {
+//     setTodo(e.target.value);
+//   }
+
+//   function handleFormSubmit(e) {
+//     e.preventDefault();
+
+//     if (todo !== "") {
+//       setTodos([
+//         ...todos,
+//         {
+//           id: todos.length + 1,
+//           text: todo,
+//         },
+//       ]);
+//     }
+
+//     setTodo("");
+//   }
+
+//   function handleDeleteClick(id) {
+//     const removeItem = todos.filter((todo) => {
+//       return todo.id !== id;
+//     });
+//     setTodos(removeItem);
+//   }
+
+//   return (
+//     <div>
+//       <form onSubmit={handleFormSubmit}>
+//         <input
+//           placeholder="Create a new todo"
+//           value={todo}
+//           onChange={handleInputChange}
+//         />
+//         <button>Add</button>
+//       </form>
+
+//       <ul>
+//         {todos.map((todo) => (
+//           <li key={todo.id}>
+//             {todo.text}
+//             <button onClick={() => handleDeleteClick(todo.id)}>Delete</button>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// Modal.js
+
+// import React from 'react'
+// import ReactDom from 'react-dom'
+
+// const MODAL_STYLES = {
+//   position: 'fixed',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   backgroundColor: '#FFF',
+//   padding: '50px',
+//   zIndex: 1000
+// }
+
+// const OVERLAY_STYLES = {
+//   position: 'fixed',
+//   top: 0,
+//   left: 0,
+//   right: 0,
+//   bottom: 0,
+//   backgroundColor: 'rgba(0, 0, 0, .7)',
+//   zIndex: 1000
+// }
+
+// export default function Modal({ open, children, onClose }) {
+//   if (!open) return null
+
+//   return ReactDom.createPortal(
+//     <>
+//       <div style={OVERLAY_STYLES} />
+//       <div style={MODAL_STYLES}>
+//         <button onClick={onClose}>Close Modal</button>
+//         {children}
+//       </div>
+//     </>,
+//     document.getElementById('portal')
+//   )
+// }
+
+// popup.js
+
+// import React, { useState } from 'react'
+// import Modal from './Modal'
+
+// const BUTTON_WRAPPER_STYLES = {
+//   position: 'relative',
+//   zIndex: 1
+// }
+
+
+// export default function App() {
+//   const [isOpen, setIsOpen] = useState(false)
+//   return (
+//     <>
+//       <div style={BUTTON_WRAPPER_STYLES} onClick={() => console.log('clicked')}>
+//         <button onClick={() => setIsOpen(true)}>Open Modal</button>
+//         <Modal open={isOpen} onClose={() => setIsOpen(false)}/>
+//       </div>
+//     </>
+//   )
+// }
