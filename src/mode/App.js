@@ -1,6 +1,7 @@
 // App.js
 
 import { useEffect, useState } from "react";
+import "./App.css"; 
 
 export default function App() {
   const [todos, setTodos] = useState(() => {
@@ -46,21 +47,24 @@ export default function App() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
+    <div className="App">
+      <form className="form1" onSubmit={handleFormSubmit}>
         <input
+          className="username"
           placeholder="Create a new todo"
           value={todo}
           onChange={handleInputChange}
         />
-        <button>Add</button>
+        <button className="submit">Add</button>
       </form>
 
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
             {todo.text}
-            <button onClick={() => handleDeleteClick(todo.id)}>Delete</button>
+            <button className="submitDelete" onClick={() => handleDeleteClick(todo.id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
